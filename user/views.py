@@ -16,7 +16,9 @@ class RegistrUserView(CreateAPIView):
         data = {}
         if serializer.is_valid():
             serializer.save()
-            data['response'] = True
+            data['username'] = request.data.get('username')
+            data['email'] = request.data.get('email')
+            data['first_name'] = request.data.get('first_name') if len(request.data.get('first_name')) > 0 else data.get('username')
             return Response(data, status=status.HTTP_200_OK)
         else:
             data = serializer.errors
