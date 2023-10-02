@@ -2,7 +2,7 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.generics import CreateAPIView
 from rest_framework.permissions import AllowAny
-from .models import User
+from django.contrib.auth.models import User
 from .serializers import UserRegistrSerializer
 
 
@@ -18,7 +18,8 @@ class RegistrUserView(CreateAPIView):
             serializer.save()
             data['username'] = request.data.get('username')
             data['email'] = request.data.get('email')
-            data['first_name'] = request.data.get('first_name') if len(request.data.get('first_name')) > 0 else data.get('username')
+            data['first_name'] = request.data.get('first_name')\
+                if len(request.data.get('first_name')) > 0 else data.get('username')
             return Response(data, status=status.HTTP_200_OK)
         else:
             data = serializer.errors
