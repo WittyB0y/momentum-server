@@ -5,6 +5,7 @@ from django.urls import include, path, re_path
 from momentumServer import settings
 from momentumServer.settings import schema_view
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/v1/', include('api.urls')),
