@@ -4,3 +4,5 @@ db.sqlite3
 venv
 __pycache__
 media
+.pytest_cache
+test.sqlite3
