@@ -19,7 +19,7 @@ def rename_file(name, image):
     return image.name, file_extension
 
 
-class LoadPhoto(CreateAPIView):
+class UploadPhoto(CreateAPIView):
     queryset = Photo.objects.all()
     serializer_class = UserLoadPhotoSerializer
 

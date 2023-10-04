@@ -4,21 +4,16 @@ from pathlib import Path
 import os
 from dotenv import load_dotenv
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
 
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 load_dotenv()
 
 SECRET_KEY = os.getenv('SECRET_KEY')
 
-# SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG')
 
 ALLOWED_HOSTS = [port.strip() for port in os.getenv('PORTS').split(',')]
-
-
-# Application definition
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -33,6 +28,7 @@ INSTALLED_APPS = [
     'user.apps.UserConfig',
     'photo.apps.PhotoConfig',
     'friend.apps.FriendConfig',
+    'api.apps.ApiConfig',
 ]
 
 MIDDLEWARE = [
@@ -65,9 +61,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'momentumServer.wsgi.application'
 
-
-# Database
-# https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
     'default': {

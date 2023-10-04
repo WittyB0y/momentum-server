@@ -44,13 +44,13 @@ def test_fail_user_registration_empty_field(client):
         'last_name': last_name,
     })
     response_data = {
-    "username": [
-        "This field may not be blank."
-    ],
-    "password": [
-        "This field may not be blank."
-    ]
-}
+        "username": [
+            "This field may not be blank."
+        ],
+        "password": [
+            "This field may not be blank."
+        ],
+    }
 
     assert response.json() == response_data
     assert not User.objects.filter(username=username).exists()
