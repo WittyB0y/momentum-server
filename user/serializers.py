@@ -39,7 +39,6 @@ class UserRegisterSerializer(serializers.ModelSerializer):
             )
         for k, v in attrs.items():
             attrs[k] = v.capitalize()
-
         return attrs
 
     def save(self, *args, **kwargs):
@@ -59,30 +58,7 @@ class GetUserSerializer(serializers.ModelSerializer):
         model: User = User
         fields: tuple['str'] = ('id', 'username', 'last_name', 'first_name',)
 
-
-# class CheckIsAvailableUsernameSerializer(serializers.ModelSerializer):
-#     username: str = serializers.CharField(max_length=150)
-#     # validator = UserRegisterSerializer
-#
-#     class Meta:
-#         model: User = User
-#         fields: tuple['str'] = ('username',)
-#
-#     def validate(self, attrs):
-#         if 'username' in attrs and (not re.match(
-#                 r'^[a-zA-Z0-9/./+/-/_]{3,150}$', attrs['username'])
-#         ):
-#             raise serializers.ValidationError(
-#                 'Incorrect username.',
-#                 code=status.HTTP_400_BAD_REQUEST,
-#             )
-#         # attrs = self.validator(attrs).validate(attrs)
-#         # if not attrs:
-#         #     raise serializers.ValidationError(
-#         #         'Incorrect username.',
-#         #         code=status.HTTP_400_BAD_REQUEST,
-#         #     )
-#         return attrs
+          
 class CheckIsAvailableUsernameSerializer(serializers.Serializer):
     username = serializers.CharField(max_length=150, required=True)
 
