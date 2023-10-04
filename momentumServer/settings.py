@@ -3,9 +3,12 @@ from pathlib import Path
 
 import os
 from dotenv import load_dotenv
-
+from rest_framework import permissions
+from drf_yasg.views import get_schema_view
+from drf_yasg import openapi
 
 BASE_DIR = Path(__file__).resolve().parent.parent
+
 
 load_dotenv()
 
@@ -25,6 +28,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework_simplejwt',
     'djoser',
+    'drf_yasg',
     'user.apps.UserConfig',
     'photo.apps.PhotoConfig',
     'friend.apps.FriendConfig',
@@ -165,3 +169,13 @@ SIMPLE_JWT = {
     "SLIDING_TOKEN_REFRESH_SERIALIZER":
         "rest_framework_simplejwt.serializers.TokenRefreshSlidingSerializer",
 }
+schema_view = get_schema_view(
+    openapi.Info(
+        title="Momentum",
+        default_version='v1',
+        description="API SWAGGER",
+        contact=openapi.Contact(email=os.getenv('EMAIL_ADMIN')),
+    ),
+    public=True,
+    permission_classes=(permissions.AllowAny,),
+)

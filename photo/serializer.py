@@ -20,3 +20,17 @@ class UserLoadPhotoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Photo
         fields = ('image',)
+
+
+class GetDecryptingImageSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Photo
+        fields = '__all__'
+
+
+class GetNewPhotoSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Photo
+        fields = ('filename', )
