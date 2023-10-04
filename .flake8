@@ -1,3 +1,3 @@
 [flake8]
-exclude = .git,__pycache__,venv,db.sqlite3,.env,migrations
+exclude = .git,__pycache__,venv,db.sqlite3,.env,migrations,.pytest_cache,pytest.ini
 max-line-length = 100

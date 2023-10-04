@@ -17,7 +17,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/v1/', include('rest_framework.urls')),
     path('api/v1/auth/', include('djoser.urls')),
-    path('api/v1/register', RegistrUserView.as_view(), name='registr'),
+    path('api/v1/register', RegistrUserView.as_view(), name='register'),
     path('add_friend/', UserFriend.as_view(), name='add_friend'),
     path('api/v1/friends/', GetAllUserFriend.as_view()),
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
