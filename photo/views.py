@@ -10,7 +10,7 @@ from rest_framework.response import Response
 
 from photo.models import Photo, AccessPhoto
 from photo.protectPhoto import encrypting, decrypting
-from photo.serializer import UserLoadPhotoSerializer
+from photo.serializer import UserLoadPhotoSerializer, GetDecryptingImageSerializer, GetNewPhotoSerializer
 
 
 def rename_file(name, image):
@@ -65,6 +65,7 @@ class UploadPhoto(CreateAPIView):
 
 class GetNewPhoto(ListAPIView):
     queryset = AccessPhoto.objects.all()
+    serializer_class = GetNewPhotoSerializer
 
     def list(self, request, *args, **kwargs):
         user = request.user
@@ -82,6 +83,7 @@ class GetNewPhoto(ListAPIView):
 
 class GetDecryptingImage(ListAPIView):
     queryset = AccessPhoto.objects.all()
+    serializer_class = GetDecryptingImageSerializer
 
     def list(self, request, *args, **kwargs):
         user = request.user
