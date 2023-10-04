@@ -10,7 +10,11 @@ from rest_framework.response import Response
 
 from photo.models import Photo, AccessPhoto
 from photo.protectPhoto import encrypting, decrypting
-from photo.serializer import UserLoadPhotoSerializer, GetDecryptingImageSerializer, GetNewPhotoSerializer
+from photo.serializer import (
+    UserLoadPhotoSerializer,
+    GetDecryptingImageSerializer,
+    GetNewPhotoSerializer,
+                              )
 
 
 def rename_file(name, image):
