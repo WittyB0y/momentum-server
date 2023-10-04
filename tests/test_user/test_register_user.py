@@ -23,7 +23,7 @@ def test_success_user_registration(client):
     )
     response_data = {
         "username": username.capitalize(),
-        "email": email.lower(),
+        "email": email.capitalize(),
         "first_name": first_name.capitalize(),
     }
 
