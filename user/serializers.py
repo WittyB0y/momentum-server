@@ -38,7 +38,8 @@ class UserRegisterSerializer(serializers.ModelSerializer):
                 code=status.HTTP_400_BAD_REQUEST,
             )
         for k, v in attrs.items():
-            attrs[k] = v.capitalize()
+            if k not in ('password',):
+                attrs[k] = v.capitalize()
         return attrs
 
     def save(self, *args, **kwargs):
@@ -58,7 +59,7 @@ class GetUserSerializer(serializers.ModelSerializer):
         model: User = User
         fields: tuple['str'] = ('id', 'username', 'last_name', 'first_name',)
 
-          
+
 class CheckIsAvailableUsernameSerializer(serializers.Serializer):
     username = serializers.CharField(max_length=150, required=True)
 
