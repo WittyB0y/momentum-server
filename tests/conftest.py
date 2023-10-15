@@ -1,17 +1,7 @@
 import pytest
 from django.contrib.auth.models import User
-import enum
 
 from tests.test_1_user.test_register_user import do_post_request
-
-
-class UserData(enum.Enum):
-    user1 = {
-        "username": "Qtestuserq",
-        "first_name": "Test",
-        "email": "testuser@example.com",
-        "password": "testpAssword123@",
-    }
 
 
 @pytest.fixture(scope='session')
@@ -55,6 +45,23 @@ def user_registration(client):
     password = 'Test123@'
     email = "test@text.com"
     first_name = 'Test'
+    do_post_request(
+        client,
+        'register',
+        username=username,
+        password=password,
+        email=email,
+        first_name=first_name,
+    )
+    return {'username': username, 'password': password}
+
+
+@pytest.fixture
+def user_registration2(client):
+    username = 'TestCat123'
+    password = 'Test123@'
+    email = "test@text.com"
+    first_name = 'TestCat'
     do_post_request(
         client,
         'register',
