@@ -95,7 +95,12 @@ class GetDecryptingImage(ListAPIView):
         if isinstance(user, AnonymousUser):
             return Response({'error': 'not access'}, status=status.HTTP_401_UNAUTHORIZED)
 
-        file = Photo.objects.get(filename=request.data['name'])
+        name = request.data.get('name')
+
+        if name is None:
+            return Response({'error': 'not found field name'}, status=status.HTTP_400_BAD_REQUEST)
+
+        file = Photo.objects.get(filename=name)
         access = self.queryset.filter(photo_id=file.id, friend=user)
 
         if not access.exists():

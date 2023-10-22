@@ -128,8 +128,8 @@ DJOSER = {
 }
 
 SIMPLE_JWT = {
-    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=6000),
-    "REFRESH_TOKEN_LIFETIME": timedelta(days=365),
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=int(os.getenv('TIME_LIFE_ACCESS_TOKEN'))),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=int(os.getenv('TIME_LIFE_REFRESH_TOKEN'))),
     "ROTATE_REFRESH_TOKENS": False,
     "BLACKLIST_AFTER_ROTATION": False,
     "UPDATE_LAST_LOGIN": False,
